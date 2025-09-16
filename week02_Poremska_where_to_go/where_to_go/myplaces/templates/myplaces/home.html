@@ -1,0 +1,32 @@
+{% extends "myplaces/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main-content text-center">
+
+    <h2>Привіт 😊</h2>
+    <p class="mb-4">
+        Я бачу, у тебе нема ідей куди сьогодні іти?<br>
+        Давай виберемо разом ☺️
+    </p>
+
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-main">Куди ідемо?</button>
+    </form>
+
+
+    {% if chosen %}
+        <div class="card mt-4 p-3 shadow-sm mx-auto text-center" style="max-width: 400px;">
+
+            <h4>{{ chosen.title }}</h4>
+            <p class="mb-1">⭐ {{ chosen.rating }}</p>
+
+            <a href="{% url 'myplaces:place_detail' chosen.id %}" class="btn btn-outline-primary btn-sm mt-2">
+                Детальніше
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
