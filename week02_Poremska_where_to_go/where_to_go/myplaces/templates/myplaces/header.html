@@ -1,0 +1,14 @@
+<header class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+
+    <a class="navbar-brand" href="{% url 'myplaces:home' %}">✨ Where To Go</a>
+
+    <div class="ms-auto">
+      <a href="{% url 'myplaces:places_list' %}" class="btn btn-outline-primary">📋 Дивитися всі заклади</a>
+
+      {% if request.resolver_match.url_name != "home" %}
+        <a href="{% url 'myplaces:add_place' %}" class="btn btn-success">➕ Додати заклад</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
